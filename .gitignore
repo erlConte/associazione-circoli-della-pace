@@ -1,0 +1,23 @@
+# File di sistema
+.DS_Store
+Thumbs.db
+
+# File di editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# File di ambiente
+.env
+.env.local
+.env.*.local
+
+# File di log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dipendenze
+node_modules/ 

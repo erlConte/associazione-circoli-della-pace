@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Evento speciale - Festival della Musica per la Pace 2025">
+    <meta name="keywords" content="evento, musica, festival, concerti, 2025, pace, vaticano">
+    <title>Festival della Musica per la Pace 2025 - 20 Aprile</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Festival della Musica per la Pace 2025</h1>
+            <div class="event-details">
+                <p class="date"><i class="far fa-calendar-alt"></i> 20 Aprile 2025</p>
+                <p class="time"><i class="far fa-clock"></i> Dalle 18:00 alle 23:00</p>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> <a href="#" id="location-link">Via della Conciliazione, Vaticano</a></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Description Section -->
+        <section class="description">
+            <h2>Chi Siamo</h2>
+            <p>L'Associazione Circoli per la Pace presenta il Festival della Musica per la Pace 2025, un evento imperdibile che riunisce i migliori artisti italiani e internazionali per una serata indimenticabile di musica dal vivo, dedicata al messaggio di pace e unità.</p>
+            
+            <h2>Programma</h2>
+            <ul class="program">
+                <li>18:00 - Apertura porte e welcome drink</li>
+                <li>19:00 - Performance di apertura</li>
+                <li>20:30 - Artisti principali</li>
+                <li>22:00 - Gran finale con tutti gli artisti</li>
+            </ul>
+
+            <h2>Ospiti Speciali</h2>
+            <div class="guests">
+                <div class="guest-card">
+                    <img src="images/placeholder.jpg" alt="Marco Rossi">
+                    <h3>Marco Rossi</h3>
+                    <p>Artista principale del festival, noto per le sue performance energetiche e coinvolgenti.</p>
+                </div>
+                <div class="guest-card">
+                    <img src="images/placeholder.jpg" alt="Laura Bianchi">
+                    <h3>Laura Bianchi</h3>
+                    <p>Stella emergente della scena musicale italiana, con un repertorio che spazia dal pop al jazz.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta">
+            <h2>Partecipa all'Evento</h2>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Acquista Biglietti</a>
+                <a href="#" class="btn btn-secondary">Aggiungi al Calendario</a>
+                <div class="social-share">
+                    <a href="#" class="social-btn"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map and Donations Container -->
+        <div class="map-donations-container">
+            <!-- Map Section -->
+            <section class="map-section">
+                <h2>Dove Siamo</h2>
+                <div id="map"></div>
+                <a href="#" class="btn btn-secondary" id="directions-btn">Ottieni Indicazioni</a>
+            </section>
+
+            <!-- Donations Section -->
+            <section class="donations">
+                <h2>Sostieni l'Evento</h2>
+                <p>Il tuo supporto è fondamentale per rendere questo evento ancora più speciale. Contribuisci alla realizzazione del Festival della Musica per la Pace 2025!</p>
+                <div class="donation-counter">
+                    <p>Donazioni raccolte: <span id="donation-amount">€0</span></p>
+                </div>
+                <div class="donation-buttons">
+                    <button id="paypal-donate" class="btn btn-primary">
+                        <i class="fab fa-paypal"></i> Dona con PayPal
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Associazione Circoli per la Pace. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <!-- Sostituisci questa chiave API con la tua chiave di produzione -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=LA_TUA_CHIAVE_API&callback=initMap"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYQ3mX5VLc4-NLbvoRmkrzLZ82ETZvHB8Uc5TxsgczhDxHXieZkVPB2N8H7A0x8LbZgYbqX8oNwM&currency=EUR"></script>
+</body>
+</html> 
