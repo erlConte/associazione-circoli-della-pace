@@ -6,8 +6,9 @@
     --text-color: #2c3e50;
     --light-bg: #f8f9fa;
     --white: #ffffff;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    --gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+    --angelic-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
 }
 
 * {
@@ -17,16 +18,107 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background: var(--gradient);
 }
 
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+nav {
+    padding: 20px 0;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Stili Comuni per le Sezioni */
+section {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/hero-bg.jpg');
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)), url('../images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -47,58 +139,271 @@ body {
     right: 0;
     height: 100%;
     background: url('../images/peace-pattern.png') repeat;
-    opacity: 0.1;
+    opacity: 0.05;
     pointer-events: none;
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 900px;
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow);
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+/* Quote Container */
+.quote-container {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+    border: 2px solid rgba(46, 204, 113, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-container::before,
+.quote-container::after {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    color: var(--accent-color);
+    opacity: 0.1;
+    position: absolute;
+}
+
+.quote-container::before {
+    top: -20px;
+    left: -20px;
+}
+
+.quote-container::after {
+    bottom: -40px;
+    right: -20px;
+}
+
+.quote-container .quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--primary-color);
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.quote-container .quote-author {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    text-align: right;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+/* Event Details Section */
+.event-details-section {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.event-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.event-card {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--light-bg);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.event-card i {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.event-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.event-card p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+/* Program Section */
+.program-section {
+    padding: 100px 0;
+    background: var(--gradient);
+}
+
+.program-timeline {
+    max-width: 800px;
+    margin: 50px auto;
     position: relative;
 }
 
-.hero h1::after {
+.program-timeline::before {
     content: '';
     position: absolute;
-    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 5px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-    border-radius: 5px;
+    width: 2px;
+    height: 100%;
+    background: var(--secondary-color);
 }
 
-.event-details {
-    font-size: 1.2rem;
-    background: rgba(255, 255, 255, 0.1);
+.timeline-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-item .time {
+    background: var(--secondary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.timeline-item .content {
+    background: var(--white);
     padding: 20px;
     border-radius: 15px;
-    margin-top: 20px;
+    box-shadow: var(--shadow);
+    flex: 1;
 }
 
-.event-details p {
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+.timeline-item .content h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    margin: 0;
 }
 
-.event-details i {
-    color: var(--accent-color);
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        position: relative;
+    }
+
+    nav .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .event-details {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding: 15px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .event-details::-webkit-scrollbar {
+        display: none;
+    }
+
+    .event-details p {
+        flex: 0 0 auto;
+        min-width: auto;
+    }
+
+    .quote-container .quote {
+        font-size: 2rem;
+    }
+
+    .program-timeline::before {
+        left: 0;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .timeline-item .time {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content {
+        padding: 20px;
+    }
+
+    .quote-container .quote {
+        font-size: 1.8rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .event-card {
+        padding: 30px 15px;
+    }
+
+    .event-details {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding: 15px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .event-details::-webkit-scrollbar {
+        display: none;
+    }
+
+    .event-details p {
+        flex: 0 0 auto;
+        min-width: auto;
+        font-size: 0.8rem;
+    }
 }
 
 /* Main Content */
@@ -108,43 +413,57 @@ main {
     padding: 40px 20px;
 }
 
-section {
-    margin-bottom: 80px;
-    position: relative;
-    overflow: hidden;
+/* Manifesto Section */
+.manifesto {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
 }
 
-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: url('../images/peace-pattern.png') repeat;
-    opacity: 0.05;
-    pointer-events: none;
+.manifesto-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-h2 {
+.manifesto-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 30px;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.manifesto-card:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
+}
+
+.manifesto-card h3 {
     color: var(--primary-color);
-    margin-bottom: 30px;
-    font-size: 2.5rem;
-    text-align: center;
-    position: relative;
-    padding-bottom: 15px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
 }
 
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-    border-radius: 2px;
+.manifesto-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.manifesto-conclusion {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid rgba(46, 204, 113, 0.1);
+}
+
+.manifesto-conclusion:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
+    border-color: rgba(46, 204, 113, 0.2);
 }
 
 /* Description Section */
@@ -164,9 +483,15 @@ h2::after {
 .program {
     list-style: none;
     margin: 20px 0;
-    background: var(--light-bg);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     padding: 20px;
     border-radius: 15px;
+    border: 2px solid rgba(52, 152, 219, 0.1);
+}
+
+.program:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
+    border-color: rgba(52, 152, 219, 0.2);
 }
 
 .program li {
@@ -175,6 +500,7 @@ h2::after {
     display: flex;
     align-items: center;
     gap: 10px;
+    color: var(--primary-color);
 }
 
 .program li:last-child {
@@ -183,7 +509,7 @@ h2::after {
 
 .program li::before {
     content: '•';
-    color: var(--secondary-color);
+    color: var(--accent-color);
     font-size: 1.5rem;
 }
 
@@ -196,27 +522,16 @@ h2::after {
 }
 
 .guest-card {
-    background: var(--white);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-}
-
-.guest-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    transition: transform 0.3s ease;
+    border-right: 4px solid var(--accent-color);
 }
 
 .guest-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
 }
 
 .guest-card img {
@@ -230,6 +545,7 @@ h2::after {
     margin: 0;
     color: var(--primary-color);
     font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
 }
 
 .guest-card p {
@@ -237,33 +553,316 @@ h2::after {
     color: var(--text-color);
 }
 
-/* CTA Section */
-.cta {
-    background: var(--white);
-    padding: 60px 40px;
-    text-align: center;
+/* Map and Actions Container */
+.map-actions-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.map-section, .cta {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 40px;
     border-radius: 20px;
     box-shadow: var(--shadow);
+    border: 2px solid rgba(44, 62, 80, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-section::before, .cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.map-section:hover, .cta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
+    border-color: rgba(52, 152, 219, 0.2);
+}
+
+.map-section:hover::before, .cta:hover::before {
+    opacity: 1;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 15px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.map-section:hover #map {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.1);
+}
+
+.actions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .cta-buttons {
     display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 30px;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
 }
 
+.cta-buttons .btn {
+    margin-bottom: 15px;
+}
+
+/* Stili comuni per i pulsanti */
+.btn, #paypal-donate {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    color: white;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    width: auto;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover, #paypal-donate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+}
+
+.btn i, #paypal-donate i {
+    font-size: 1.2em;
+}
+
+.social-share {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    justify-content: center;
+}
+
+.social-btn {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    background: var(--light-bg);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 2px solid rgba(52, 152, 219, 0.1);
+}
+
+.social-btn:hover {
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+    border-color: rgba(52, 152, 219, 0.3);
+    background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
+}
+
+.donation-counter {
+    font-size: 2rem;
+    margin: 25px 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    section {
+        padding: 30px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .manifesto-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .map-actions-container {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-container .quote {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .quote-container .quote {
+        font-size: 1.8rem;
+    }
+
+    .event-details p {
+        font-size: 1rem;
+    }
+}
+
+/* About Section */
+.about {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/* Join Section */
+.join {
+    padding: 80px 0;
+    background: var(--gradient);
+    text-align: center;
+}
+
+.join-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.join-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Contact Section */
+.contact {
+    padding: 80px 0;
+    background: var(--white);
+    text-align: center;
+}
+
+.contact-content {
+    max-width: 60px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    margin: 30px 0;
+}
+
+.contact-info p {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact-info i {
+    color: var(--secondary-color);
+}
+
+/* Stili Comuni per le Card */
+.card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Stili Comuni per i Pulsanti */
 .btn {
     padding: 15px 35px;
     border-radius: 25px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    width: 100%;
 }
 
 .btn::before {
@@ -294,298 +893,260 @@ h2::after {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.social-share {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    justify-content: center;
+/* Stili Comuni per i Contenitori */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.social-btn {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-    background: var(--white);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow);
-}
-
-.social-btn:hover {
-    color: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Map and Donations Container */
-.map-donations-container {
-    display: flex;
+/* Stili Comuni per le Grid */
+.grid {
+    display: grid;
     gap: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
-.map-section,
-.donations {
-    flex: 1;
-    margin-bottom: 0;
-    background: var(--white);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: var(--shadow);
+/* Stili Comuni per i Testi */
+p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 20px;
 }
 
-#map {
-    height: 400px;
-    width: 100%;
-    border-radius: 15px;
-    margin: 20px 0;
-    box-shadow: var(--shadow);
+/* Stili Comuni per le Icone */
+.icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
 }
 
-.donation-counter {
-    font-size: 1.8rem;
-    margin: 20px 0;
+/* Stili Comuni per i Contatori */
+.counter {
+    font-size: 2rem;
     color: var(--secondary-color);
     font-weight: bold;
-}
-
-/* Footer */
-footer {
-    background: var(--primary-color);
-    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 30px;
-    margin-top: 60px;
-    position: relative;
-    overflow: hidden;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: url('../images/peace-pattern.png') repeat;
-    opacity: 0.1;
-    pointer-events: none;
-}
-
-.footer-content {
-    position: relative;
-    z-index: 1;
+    font-family: 'Playfair Display', serif;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .map-donations-container {
-        flex-direction: column;
-    }
-
-    .map-section,
-    .donations {
-        margin-bottom: 40px;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .event-details {
-        font-size: 1rem;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-    }
-
-    .btn {
-        width: 100%;
-    }
-
-    #map {
-        height: 300px;
-    }
-
     section {
-        margin-bottom: 60px;
+        padding: 30px;
+        margin-bottom: 40px;
     }
 
     h2 {
         font-size: 2rem;
     }
+
+    .card {
+        padding: 20px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content {
+    section {
         padding: 20px;
     }
 
-    .description,
-    .cta,
-    .map-section,
-    .donations {
-        padding: 20px;
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .icon {
+        font-size: 1.5rem;
+    }
+
+    .counter {
+        font-size: 1.6rem;
     }
 }
 
-/* Manifesto Section */
-.manifesto {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.manifesto::before {
+/* Effetto di brillantezza sulle card */
+.card::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: url('../images/peace-pattern.png') repeat;
-    opacity: 0.05;
-    pointer-events: none;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: transform 0.6s ease;
 }
 
-.manifesto-content {
-    position: relative;
-    z-index: 1;
+.card:hover::after {
+    transform: rotate(45deg) translate(50%, 50%);
 }
 
-.manifesto-intro {
-    text-align: center;
-    margin-bottom: 60px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+/* Stili per il messaggio di ringraziamento */
+.thank-you-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    animation: slideIn 0.5s ease-out;
 }
 
-.manifesto-intro .quote {
+.thank-you-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid rgba(0, 112, 186, 0.2);
+}
+
+.thank-you-content i {
+    color: #0070ba;
     font-size: 2rem;
-    font-style: italic;
+}
+
+.thank-you-content h3 {
     color: #2c3e50;
-    margin-bottom: 20px;
-    line-height: 1.6;
-    position: relative;
-    padding: 0 40px;
+    margin: 0;
+    font-size: 1.2rem;
 }
 
-.manifesto-intro .quote::before,
-.manifesto-intro .quote::after {
-    content: '"';
-    font-size: 4rem;
-    color: #3498db;
-    opacity: 0.3;
-    position: absolute;
+.thank-you-content p {
+    color: #666;
+    margin: 0;
+    font-size: 0.9rem;
 }
 
-.manifesto-intro .quote::before {
-    left: 0;
-    top: -20px;
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-.manifesto-intro .quote::after {
-    right: 0;
-    bottom: -40px;
-}
-
-.manifesto-intro .quote-author {
-    color: #7f8c8d;
+/* Stili specifici per il pulsante di donazione */
+#paypal-donate {
+    background: linear-gradient(135deg, #FF6B6B, #FF4757);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 12px;
     font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
 }
 
-.manifesto-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 60px;
+#paypal-donate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    background: linear-gradient(135deg, #FF4757, #FF6B6B);
 }
 
-.manifesto-card {
-    background: white;
+/* Stili per il displayer delle donazioni */
+.donation-counter {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 15px 25px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.donation-counter span:first-child {
+    color: #666;
+    font-weight: 500;
+}
+
+.donation-counter span:last-child {
+    color: #FF4757;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+/* Stili per la sezione donazioni */
+.donations {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border-radius: 20px;
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    border: 2px solid rgba(0, 0, 0, 0.05);
 }
 
-.manifesto-card::before {
+.donations::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, #3498db, #2ecc71);
+    background: linear-gradient(90deg, #FF6B6B, #FF4757);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.manifesto-card:hover {
+.donations:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #ffffff, #e9ecef);
+    border-color: rgba(255, 107, 107, 0.2);
 }
 
-.manifesto-card h3 {
+.donations:hover::before {
+    opacity: 1;
+}
+
+.donations::after {
+    display: none;
+}
+
+.donations h2 {
     color: #2c3e50;
     margin-bottom: 15px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
-.manifesto-card p {
-    color: #34495e;
-    line-height: 1.6;
-}
-
-.manifesto-conclusion {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.manifesto-conclusion p {
-    font-size: 1.2rem;
-    color: #2c3e50;
-    line-height: 1.8;
-}
-
-@media (max-width: 768px) {
-    .manifesto {
-        padding: 60px 0;
-    }
-
-    .manifesto-intro .quote {
-        font-size: 1.5rem;
-        padding: 0 20px;
-    }
-
-    .manifesto-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .manifesto-card {
-        padding: 20px;
-    }
-
-    .manifesto-conclusion {
-        padding: 20px;
-    }
+.donations p {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
 } 

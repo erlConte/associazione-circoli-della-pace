@@ -85,18 +85,12 @@ document.querySelectorAll('.social-btn').forEach(btn => {
         const url = encodeURIComponent(window.location.href);
         const title = encodeURIComponent('Festival della Musica per la Pace 2025');
         
-        let shareUrl;
         if (btn.querySelector('.fa-facebook')) {
-            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-        } else if (btn.querySelector('.fa-twitter')) {
-            shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
         } else if (btn.querySelector('.fa-instagram')) {
             // Instagram non supporta la condivisione diretta via URL
-            alert('Per condividere su Instagram, usa la funzione di condivisione del tuo browser');
-            return;
+            window.open('https://instagram.com', '_blank');
         }
-        
-        window.open(shareUrl, '_blank', 'width=600,height=400');
     });
 });
 
@@ -116,15 +110,60 @@ document.querySelector('.btn-secondary').addEventListener('click', (e) => {
     }
 });
 
-// Simulazione del contatore delle donazioni (da sostituire con l'integrazione reale)
+// Gestione del contatore delle donazioni
 let donationAmount = 0;
 const donationDisplay = document.getElementById('donation-amount');
 
-// Configurazione PayPal
+// Configurazione del pulsante di donazione
 document.getElementById('paypal-donate').addEventListener('click', function() {
     // Apri il popup di PayPal
     window.open('https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID', '_blank');
 });
+
+// Simulazione dell'aggiornamento del contatore (da sostituire con l'integrazione reale)
+function updateDonationDisplay() {
+    const currentAmount = parseFloat(donationDisplay.textContent.replace('€', ''));
+    const targetAmount = donationAmount;
+    const duration = 1000; // 1 secondo
+    const startTime = performance.now();
+    
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Funzione di easing per un'animazione più fluida
+        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        
+        const currentValue = currentAmount + (targetAmount - currentAmount) * easeOutCubic;
+        donationDisplay.textContent = `€${currentValue.toFixed(2)}`;
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        }
+    }
+    
+    requestAnimationFrame(animate);
+}
+
+// Funzione per mostrare il messaggio di ringraziamento
+function showThankYouMessage(amount) {
+    const thankYouMessage = document.createElement('div');
+    thankYouMessage.className = 'thank-you-message';
+    thankYouMessage.innerHTML = `
+        <div class="thank-you-content">
+            <i class="fas fa-heart"></i>
+            <h3>Grazie per la tua donazione!</h3>
+            <p>Hai donato €${amount.toFixed(2)} per il Festival della Musica per la Pace 2025</p>
+        </div>
+    `;
+    
+    document.body.appendChild(thankYouMessage);
+    
+    // Rimuovi il messaggio dopo 5 secondi
+    setTimeout(() => {
+        thankYouMessage.remove();
+    }, 5000);
+}
 
 // Animazione dello scroll fluido per i link interni
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
