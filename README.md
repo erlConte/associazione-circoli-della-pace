@@ -26,7 +26,7 @@ Sito web ufficiale del Festival della Musica per la Pace 2025, un evento special
 
 ## Deploy
 
-Il sito è deployato su GitHub Pages all'indirizzo: [URL_DEL_TUO_SITO]
+Il sito è deployato su GitHub Pages all'indirizzo: https://associzionecircolidellapace.com
 
 ## Contribuire
 

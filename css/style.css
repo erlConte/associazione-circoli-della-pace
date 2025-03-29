@@ -1,11 +1,13 @@
 /* Reset e variabili */
 :root {
     --primary-color: #2c3e50;
-    --secondary-color: #e74c3c;
-    --text-color: #333;
+    --secondary-color: #3498db;
+    --accent-color: #2ecc71;
+    --text-color: #2c3e50;
     --light-bg: #f8f9fa;
     --white: #ffffff;
-    --shadow: 0 2px 15px rgba(0,0,0,0.1);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 * {
@@ -18,12 +20,13 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+    background: var(--gradient);
 }
 
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero-bg.jpg');
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -32,28 +35,70 @@ body {
     text-align: center;
     color: var(--white);
     padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url('../images/peace-pattern.png') repeat;
+    opacity: 0.1;
+    pointer-events: none;
 }
 
 .hero-content {
     max-width: 800px;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
 }
 
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 2rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.hero h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    border-radius: 5px;
 }
 
 .event-details {
     font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
 }
 
 .event-details p {
     margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .event-details i {
-    margin-right: 10px;
+    color: var(--accent-color);
 }
 
 /* Main Content */
@@ -64,73 +109,141 @@ main {
 }
 
 section {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url('../images/peace-pattern.png') repeat;
+    opacity: 0.05;
+    pointer-events: none;
 }
 
 h2 {
     color: var(--primary-color);
     margin-bottom: 30px;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    border-radius: 2px;
 }
 
 /* Description Section */
+.description {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
 .description p {
     margin-bottom: 30px;
     font-size: 1.1rem;
+    line-height: 1.8;
 }
 
 .program {
     list-style: none;
     margin: 20px 0;
+    background: var(--light-bg);
+    padding: 20px;
+    border-radius: 15px;
 }
 
 .program li {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.program li:last-child {
+    border-bottom: none;
+}
+
+.program li::before {
+    content: '•';
+    color: var(--secondary-color);
+    font-size: 1.5rem;
 }
 
 /* Guest Cards */
 .guests {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 30px;
 }
 
 .guest-card {
     background: var(--white);
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.guest-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
 }
 
 .guest-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .guest-card img {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
 }
 
 .guest-card h3 {
-    padding: 15px;
+    padding: 20px;
     margin: 0;
+    color: var(--primary-color);
+    font-size: 1.5rem;
 }
 
 .guest-card p {
-    padding: 0 15px 15px;
-    color: #666;
+    padding: 0 20px 20px;
+    color: var(--text-color);
 }
 
 /* CTA Section */
 .cta {
-    background: var(--light-bg);
-    padding: 60px 20px;
+    background: var(--white);
+    padding: 60px 40px;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
 }
 
 .cta-buttons {
@@ -142,17 +255,35 @@ h2 {
 }
 
 .btn {
-    padding: 12px 30px;
+    padding: 15px 35px;
     border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.btn:hover::before {
+    transform: translateX(100%);
 }
 
 .btn-primary {
-    background: var(--secondary-color);
+    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
     color: var(--white);
 }
 
@@ -170,59 +301,27 @@ h2 {
     display: flex;
     gap: 15px;
     margin-top: 20px;
+    justify-content: center;
 }
 
 .social-btn {
     color: var(--primary-color);
     font-size: 1.5rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    background: var(--white);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
 }
 
 .social-btn:hover {
     color: var(--secondary-color);
-}
-
-/* Map Section */
-.map-section {
-    text-align: center;
-}
-
-#map {
-    height: 400px;
-    width: 100%;
-    border-radius: 10px;
-    margin: 20px 0;
-}
-
-/* Donations Section */
-.donations {
-    background: var(--light-bg);
-    padding: 60px 20px;
-    text-align: center;
-    border-radius: 10px;
-}
-
-.donation-counter {
-    font-size: 1.5rem;
-    margin: 20px 0;
-    color: var(--secondary-color);
-}
-
-.donation-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-/* Footer */
-footer {
-    background: var(--primary-color);
-    color: var(--white);
-    text-align: center;
-    padding: 20px;
-    margin-top: 60px;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Map and Donations Container */
@@ -236,6 +335,53 @@ footer {
 .donations {
     flex: 1;
     margin-bottom: 0;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: var(--shadow);
+}
+
+.donation-counter {
+    font-size: 1.8rem;
+    margin: 20px 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url('../images/peace-pattern.png') repeat;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
 }
 
 /* Responsive Design */
@@ -268,6 +414,14 @@ footer {
     #map {
         height: 300px;
     }
+
+    section {
+        margin-bottom: 60px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -275,11 +429,163 @@ footer {
         font-size: 2rem;
     }
 
-    section {
-        margin-bottom: 40px;
+    .hero-content {
+        padding: 20px;
     }
 
-    h2 {
+    .description,
+    .cta,
+    .map-section,
+    .donations {
+        padding: 20px;
+    }
+}
+
+/* Manifesto Section */
+.manifesto {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.manifesto::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url('../images/peace-pattern.png') repeat;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.manifesto-content {
+    position: relative;
+    z-index: 1;
+}
+
+.manifesto-intro {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.manifesto-intro .quote {
+    font-size: 2rem;
+    font-style: italic;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    position: relative;
+    padding: 0 40px;
+}
+
+.manifesto-intro .quote::before,
+.manifesto-intro .quote::after {
+    content: '"';
+    font-size: 4rem;
+    color: #3498db;
+    opacity: 0.3;
+    position: absolute;
+}
+
+.manifesto-intro .quote::before {
+    left: 0;
+    top: -20px;
+}
+
+.manifesto-intro .quote::after {
+    right: 0;
+    bottom: -40px;
+}
+
+.manifesto-intro .quote-author {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+.manifesto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.manifesto-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.manifesto-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+}
+
+.manifesto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.manifesto-card h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.manifesto-card p {
+    color: #34495e;
+    line-height: 1.6;
+}
+
+.manifesto-conclusion {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.manifesto-conclusion p {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .manifesto {
+        padding: 60px 0;
+    }
+
+    .manifesto-intro .quote {
         font-size: 1.5rem;
+        padding: 0 20px;
+    }
+
+    .manifesto-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .manifesto-card {
+        padding: 20px;
+    }
+
+    .manifesto-conclusion {
+        padding: 20px;
     }
 } 
