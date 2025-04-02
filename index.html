@@ -8,11 +8,15 @@
     <title>Festival della la Pace 2025 - 20 Aprile</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-content">
+            <div class="logo-container">
+                <img src="images/PEACE UNITY-03.png" alt="Logo Associazione Circoli per la Pace" class="logo-image">
+            </div>
             <div class="quote-container card">
                 <p class="quote">"Non è sufficiente parlare di pace. Bisogna crederci. E non basta crederci. Bisogna lavorarci sopra."</p>
                 <p class="quote-author">- Eleanor Roosevelt</p>
@@ -59,7 +63,11 @@
         <!-- Description Section -->
         <section class="description">
             <h2>Chi Siamo</h2>
-            <p>L'Associazione Circoli per la Pace presenta il Festival della Pace 2025, un evento imperdibile dedicato al messaggio di pace e unità.</p>
+            <p>L'Associazione Circoli per La Pace è un'organizzazione senza scopo di lucro che si 
+                dedica a promuovere valori civici, solidaristici e di utilità sociale. Ispirati dai principi di 
+                democrazia e dal rispetto dei diritti umani, ci impegniamo nella promozione della pace a 
+                livello globale, perseguendo un mondo in cui il dialogo e la cooperazione prevalgano sui 
+                conflitti.</p>
             
             <h2>Programma</h2>
             <ul class="program">
@@ -89,8 +97,10 @@
             <!-- Map Section -->
             <section class="map-section">
                 <h2>Dove Siamo</h2>
-                <div id="map"></div>
-                <a href="#" class="btn btn-secondary" id="directions-btn">Ottieni Indicazioni</a>
+                <div id="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.5589327298626!2d12.459370476389413!3d41.90234186389561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f605d7200590f%3A0x4db4e05217f4e9d4!2sVia%20della%20Conciliazione%2C%2000193%20Roma%20RM!5e0!3m2!1sit!2sit!4v1743264969525!5m2!1sit!2sit" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Via+della+Conciliazione,+00193+Roma+RM" class="btn btn-secondary" id="directions-btn">Ottieni Indicazioni</a>
             </section>
 
             <!-- Actions Container -->
@@ -99,7 +109,9 @@
                 <section class="cta card">
                     <h2>Partecipa all'Evento</h2>
                     <div class="cta-buttons">
-                        <a href="#" class="btn btn-secondary">Aggiungi al Calendario</a>
+                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Festival+della+Musica+per+la+Pace+2025&details=Evento+speciale+presso+il+Vaticano&location=Via+della+Conciliazione%2C+00193+Roma+RM&dates=20250420T180000Z%2F20250420T230000Z" class="btn btn-secondary" target="_blank">
+                            <i class="far fa-calendar-alt"></i> Aggiungi al Calendario
+                        </a>
                         <div class="social-share">
                             <a href="https://www.facebook.com/sharer/sharer.php?u=" class="social-btn" target="_blank"><i class="fab fa-facebook"></i></a>
                             <a href="https://instagram.com" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -121,8 +133,45 @@
         </div>
     </main>
 
+    <!-- Innovazioni Section -->
+    <section class="innovations">
+        <div class="container">
+            <h2>Innovazioni che Offriamo</h2>
+            <div class="grid innovations-grid">
+                <div class="card innovation-card">
+                    <h3>Tecnologia e Social Media</h3>
+                    <p>Utilizziamo le piattaforme digitali per connettere persone in tutto il mondo. Le nostre campagne online incoraggiano il dialogo e la partecipazione attiva, creando una comunità globale impegnata nella causa della pace.</p>
+                </div>
+
+                <div class="card innovation-card">
+                    <h3>Programmi di Mentoring</h3>
+                    <p>Sviluppiamo programmi mirati a formare giovani leader nella pace, fornendo loro le competenze necessarie per affrontare le sfide locali. Investiamo nel futuro, preparando la prossima generazione a diventare agenti di cambiamento.</p>
+                </div>
+
+                <div class="card innovation-card">
+                    <h3>Eventi Interattivi</h3>
+                    <p>Organizziamo eventi coinvolgenti che promuovono la partecipazione attiva, come laboratori, dibattiti e attività artistiche. Questi eventi non solo informano, ma ispirano anche azioni concrete verso la pace.</p>
+                </div>
+
+                <div class="card innovation-card">
+                    <h3>Integrazione delle Arti</h3>
+                    <p>Crediamo nel potere delle arti visive, della musica e del teatro per comunicare messaggi di pace in modi creativi e coinvolgenti. Utilizziamo la creatività per raggiungere cuori e menti, rendendo il messaggio di pace accessibile a tutti.</p>
+                </div>
+
+                <div class="card innovation-card">
+                    <h3>Reti Globali</h3>
+                    <p>Creiamo una rete di circoli per la pace in diverse nazioni, facilitando scambi culturali e collaborazioni su progetti di pace. Questa rete globale amplifica il nostro impatto e promuove una cultura di pace a livello internazionale.</p>
+                </div>
+            </div>
+
+            <div class="card vision-card">
+                <h3>La Nostra Visione</h3>
+                <p>Siamo convinti che la pace mondiale possa essere raggiunta attraverso il dialogo, la comprensione reciproca e la cooperazione. Ogni individuo ha il potere di contribuire a questo obiettivo. Unisciti a noi nel nostro viaggio verso un mondo migliore, dove la pace e la solidarietà sono al centro delle nostre azioni. Insieme, possiamo fare la differenza!</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Script -->
     <script src="js/main.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=LA_TUA_CHIAVE_API&callback=initMap"></script>
 </body>
 </html> 
