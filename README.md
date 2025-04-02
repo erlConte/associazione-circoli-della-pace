@@ -1,6 +1,6 @@
 # Festival della Musica per la Pace 2025
 
-Sito web ufficiale del Festival della Musica per la Pace 2025, un evento speciale che si terrà il 20 Aprile 2025 presso il Vaticano.
+Sito web ufficiale del Festival per la Pace 2025, un evento speciale che si terrà il 20 Aprile 2025 presso il Vaticano.
 
 ## Caratteristiche
 
